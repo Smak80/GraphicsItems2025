@@ -22,6 +22,7 @@ namespace GraphicsItems2025
             InitializeComponent();
             DataContext = _viewModel;
             Circles.ItemsSource = _viewModel.Vertexes;
+            Lines.ItemsSource = _viewModel.Edges;
         }
     }
 }
