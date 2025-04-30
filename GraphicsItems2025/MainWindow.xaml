@@ -1,0 +1,52 @@
+﻿<Window x:Class="GraphicsItems2025.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphicsItems2025"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Window.Resources>
+		<local:ColorBrushConverter x:Key="Color2Brush"/>
+	</Window.Resources>
+    <Grid>
+		<ItemsControl x:Name="Lines">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas IsItemsHost="True"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<DataTemplate.Resources>
+						<Style TargetType="Line">
+							<Setter Property="X1" Value="{Binding Path=X1}"/>
+							<Setter Property="X2" Value="{Binding Path=X2}"/>
+							<Setter Property="Y1" Value="{Binding Path=Y1}"/>
+							<Setter Property="Y2" Value="{Binding Path=Y2}"/>
+						</Style>
+					</DataTemplate.Resources>
+					<Line Stroke="Violet" StrokeThickness="3"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		<ItemsControl x:Name="Circles">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas IsItemsHost="True"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<DataTemplate.Resources>
+						<Style TargetType="Ellipse">
+							<Setter Property="Margin" Value="{Binding Path=Margin}"/>
+							<Setter Property="Fill" Value="{Binding Path=BgColor, Converter={StaticResource ResourceKey=Color2Brush}}"/>
+						</Style>
+					</DataTemplate.Resources>
+					<Ellipse Width="50" Height="50" StrokeThickness="2" Stroke="Black"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
+</Window>
